@@ -29,8 +29,8 @@ En el proyecto Pages → **Custom domains** → **Set up a custom domain** → `
 ## 4. Configurar Resend (backend del formulario)
 
 1. Crea cuenta en [resend.com](https://resend.com) si no existe.
-2. **Domains** → agrega `candelaing.cl` (o un subdominio como `mail.candelaing.cl` si prefieres aislarlo del correo normal de `contacto@candelaing.cl` para no arriesgar la entregabilidad del correo existente).
-3. Resend te da registros DNS (TXT/CNAME para SPF/DKIM) — agrégalos en Cloudflare DNS del mismo dominio. Espera la verificación (minutos, a veces más).
+2. **Domains** → agrega `mail.candelaing.cl` (subdominio dedicado al envío — así queda aislado del correo normal de `contacto@candelaing.cl` y no arriesga su entregabilidad).
+3. Resend te da registros DNS (TXT/CNAME para SPF/DKIM) — agrégalos en Cloudflare DNS bajo `mail.candelaing.cl`. Espera la verificación (minutos, a veces más).
 4. Genera una **API key** en Resend.
 5. En el proyecto Cloudflare Pages → **Settings** → **Environment variables** → **Add secret**:
    - Nombre: `RESEND_API_KEY`
@@ -38,7 +38,7 @@ En el proyecto Pages → **Custom domains** → **Set up a custom domain** → `
    - Aplica a **Production** (y **Preview** si quieres probar en ramas).
 6. Re-deploy (o el próximo push ya la toma).
 
-La función (`functions/api/contact.js`) envía desde `formulario@candelaing.cl` hacia `contacto@candelaing.cl`. Si usas un subdominio distinto para Resend, ajusta el campo `from` en ese archivo.
+La función (`functions/api/contact.js`) ya envía desde `formulario@mail.candelaing.cl` hacia `contacto@candelaing.cl`.
 
 ## 5. Verificar que todo funciona
 

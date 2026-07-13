@@ -69,7 +69,7 @@ export async function onRequestPost({ request, env }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Candela Ingeniería <formulario@candelaing.cl>",
+      from: "Candela Ingeniería <formulario@mail.candelaing.cl>",
       to: ["contacto@candelaing.cl"],
       subject: `Nueva solicitud de diagnóstico — ${empresa}`,
       text: emailBody,
