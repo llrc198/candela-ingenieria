@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.wrangler/
+
+# Kit de marca en bruto (AI/EPS/PDF/PNG/JPG/WebP, ~300MB) — no lo usa el sitio.
+# El sitio solo consume assets/logo/cropped/*.png (generados a partir de este kit).
+# Se mantiene en el filesystem local para futuros usos, pero no se sube al repo.
+assets/logo/Logos/
+assets/Candela-Ingenieria_logo_brandboard.jpg
+
+# Notas internas del proyecto — no forman parte del sitio publicado.
+CLAUDE-candela.md
+.claude/

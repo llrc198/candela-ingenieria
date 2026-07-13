@@ -1,0 +1,25 @@
+# Candela Ingeniería
+
+> Ingeniería en seguridad electrónica en Santiago, Región Metropolitana, Chile. Diagnóstico, diseño, instalación y mantención de sistemas de seguridad electrónica para clientes B2B.
+
+## Ejes de servicio
+
+- **Detección de incendios**: sistemas de detección temprana y central de alarma diseñados según el riesgo real de cada instalación, con documentación técnica que respalda el cumplimiento normativo.
+- **Control de acceso**: gestión de accesos por credencial, biometría o clave, con trazabilidad completa de ingresos.
+- **Alarma de intrusión**: sensores perimetrales e interiores con protocolo de respuesta definido.
+- **CCTV**: videovigilancia con cobertura calculada por punto crítico.
+
+## Proceso de trabajo
+
+Diagnóstico → Diseño de sistema → Instalación → Mantención. Mismo procedimiento para los cuatro ejes de servicio.
+
+## Cobertura
+
+Región Metropolitana de Santiago, Chile.
+
+## Contacto
+
+- Teléfono: +56 9 5526 7419
+- Email: contacto@candelaing.cl
+- Dirección: Nicanor Plaza 115, Santiago, RM, Chile
+- Sitio: https://candelaing.cl/

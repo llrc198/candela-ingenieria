@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Crawlers de motores de IA — permitidos explícitamente (objetivo: visibilidad en respuestas de LLM)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://candelaing.cl/sitemap.xml

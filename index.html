@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candela Ingeniería — Seguridad Electrónica</title>
+<meta name="description" content="Ingeniería en seguridad electrónica: detección de incendios, control de acceso, alarma de intrusión y CCTV. Diagnóstico, diseño, instalación y mantención.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#333333">
+<link rel="canonical" href="https://candelaing.cl/">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:url" content="https://candelaing.cl/">
+<meta property="og:site_name" content="Candela Ingeniería">
+<meta property="og:title" content="Candela Ingeniería — Seguridad Electrónica">
+<meta property="og:description" content="Ingeniería en seguridad electrónica: detección de incendios, control de acceso, alarma de intrusión y CCTV. Diagnóstico, diseño, instalación y mantención.">
+<meta property="og:image" content="https://candelaing.cl/assets/img/og/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Candela Ingeniería — Seguridad Electrónica">
+<meta name="twitter:description" content="Ingeniería en seguridad electrónica: detección de incendios, control de acceso, alarma de intrusión y CCTV. Diagnóstico, diseño, instalación y mantención.">
+<meta name="twitter:image" content="https://candelaing.cl/assets/img/og/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Candela Ingeniería",
+  "description": "Ingeniería en seguridad electrónica: detección de incendios, control de acceso, alarma de intrusión y CCTV. Diagnóstico, diseño, instalación y mantención.",
+  "url": "https://candelaing.cl/",
+  "telephone": "+56955267419",
+  "email": "contacto@candelaing.cl",
+  "image": "https://candelaing.cl/assets/logo/cropped/logo-horizontal-light.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nicanor Plaza 115",
+    "addressLocality": "Santiago",
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Región Metropolitana de Santiago"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Ejes de servicio",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Detección de incendios",
+          "description": "Sistemas de detección temprana y central de alarma diseñados según el riesgo real de cada instalación, con documentación técnica completa que respalda el cumplimiento normativo."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Control de acceso",
+          "description": "Gestión de accesos por credencial, biometría o clave, con trazabilidad completa de ingresos y soporte técnico de respuesta rápida ante cualquier falla del sistema."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Alarma de intrusión",
+          "description": "Sensores perimetrales e interiores con protocolo de respuesta definido y tiempos de reacción comprometidos ante cualquier evento."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "CCTV",
+          "description": "Videovigilancia con cobertura calculada por punto crítico y presupuesto cerrado sin costos ocultos."
+        }
+      }
+    ]
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Paleta oficial de marca (brandboard Candela Ingeniería) — estrictamente monocromática, sin color de acento. */
+    --ink: #333333;
+    --gray: #808080;
+    --line-strong: #cccccc;
+    --line: #e6e6e6;
+    --line-soft: #f2f2f2;
+    --bg-alt: #f2f2f2;
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --navy: #333333;      /* mismo tono que --ink: usado para fondos oscuros (footer), coincide con el logo sobre fondo #333 */
+    --text: #333333;
+    --text-dim: #595959;  /* ligeramente más oscuro que el gris de marca (#808080) para legibilidad de párrafo (AA) */
+    --text-faint: #808080;
+    --font-head: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  h1,h2,h3,.btn,.eyebrow,.hero-eyebrow,.service-index,.timeline-num,.brand{ font-family:var(--font-head); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; }
+  .container{ max-width:1140px; margin:0 auto; padding:0 24px; }
+
+  /* ---- header ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{ display:flex; align-items:center; }
+  .brand img.logo-img{ height:56px; width:auto; }
+  .footer-brand img.logo-img{ height:60px; width:auto; }
+  nav.links{ display:flex; align-items:center; gap:34px; }
+  nav.links a{
+    font-size:14.5px; color:var(--text-dim); transition:color .15s;
+  }
+  nav.links a:hover{ color:var(--navy); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:#fff;
+    font-weight:600; font-size:14.5px;
+    padding:12px 22px; border-radius:3px;
+    border:1px solid var(--ink);
+    cursor:pointer;
+  }
+  .btn:hover{ background:var(--gray); border-color:var(--gray); }
+  .btn-ghost{
+    background:transparent; color:var(--navy); border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--navy); background:transparent; }
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); color:var(--navy);
+    width:40px; height:40px; border-radius:3px; cursor:pointer;
+  }
+
+  /* ---- hero ---- */
+  .hero{ padding:76px 0 88px; border-bottom:1px solid var(--line); }
+  .hero .container{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:0.06em; color:var(--ink);
+    text-transform:uppercase; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(30px, 4vw, 44px); line-height:1.18; font-weight:800; letter-spacing:-0.01em;
+    color:var(--navy); margin-bottom:20px;
+  }
+  .hero p.lead{
+    font-size:17px; color:var(--text-dim); max-width:520px; margin-bottom:32px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  .hero-diagram{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px;
+    aspect-ratio:1/0.82; display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-diagram picture{ display:block; width:100%; height:100%; }
+  .hero-diagram img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ---- section heading ---- */
+  .section{ padding:88px 0; border-bottom:1px solid var(--line); }
+  .section-head{ margin-bottom:52px; max-width:660px; }
+  .eyebrow{
+    font-size:13px; font-weight:600; color:var(--ink); letter-spacing:0.06em;
+    text-transform:uppercase; margin-bottom:12px;
+  }
+  .section-head h2{ font-size:clamp(24px,2.8vw,32px); font-weight:800; margin-bottom:12px; letter-spacing:-0.01em; color:var(--navy); }
+  .section-head p{ color:var(--text-dim); font-size:16px; }
+
+  /* ---- servicios: filas alternadas ---- */
+  .service-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+    padding:44px 0; border-top:1px solid var(--line-soft);
+  }
+  .service-row:first-child{ border-top:none; padding-top:0; }
+  .service-row:nth-child(even) .service-copy{ order:2; }
+  .service-row:nth-child(even) .service-visual{ order:1; }
+  .service-index{ font-size:13px; color:var(--text-faint); font-weight:600; margin-bottom:10px; }
+  .service-copy h3{ font-size:21px; font-weight:700; margin-bottom:12px; color:var(--navy); }
+  .service-copy p{ color:var(--text-dim); font-size:15px; }
+  .service-visual{
+    background:var(--bg-alt); border:1px solid var(--line); border-radius:8px;
+    padding:24px; aspect-ratio:1/0.72; display:flex; align-items:center; justify-content:center;
+  }
+  .service-visual svg{ width:100%; height:100%; }
+  .service-visual.has-photo{ padding:0; overflow:hidden; }
+  .service-visual.has-photo picture{ display:block; width:100%; height:100%; }
+  .service-visual.has-photo img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ---- proceso ---- */
+  .timeline{ position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .timeline::before{
+    content:""; position:absolute; top:18px; left:2%; right:2%; height:1px; background:var(--line);
+  }
+  .timeline-step{ position:relative; padding-right:12px; }
+  .timeline-num{
+    position:relative; z-index:1;
+    font-size:13px; font-weight:700; color:var(--ink);
+    background:var(--bg); border:1.5px solid var(--ink);
+    width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+  }
+  .timeline-step h3{ font-size:16.5px; font-weight:700; margin-bottom:8px; color:var(--navy); }
+  .timeline-step p{ font-size:14px; color:var(--text-dim); }
+
+  /* ---- contacto ---- */
+  .contact-wrap{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start; }
+  .contact-info h2{ font-size:26px; font-weight:800; margin-bottom:16px; color:var(--navy); }
+  .contact-info p{ color:var(--text-dim); font-size:15px; margin-bottom:28px; }
+  .contact-fact{ display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line-soft); font-size:14px; }
+  .contact-fact:last-child{ border-bottom:1px solid var(--line-soft); }
+  .contact-fact .label{ color:var(--text-faint); font-size:11.5px; font-weight:600; letter-spacing:0.05em; min-width:100px; padding-top:2px; text-transform:uppercase; }
+  .contact-fact a{ color:var(--text); }
+  .contact-fact a:hover{ color:var(--ink); text-decoration:underline; }
+  .placeholder{ color:var(--text-faint); font-style:italic; }
+
+  form{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:32px;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:block; font-size:12.5px; font-weight:600; color:var(--text-dim);
+    letter-spacing:0.02em; margin-bottom:8px;
+  }
+  .field .opt{ color:var(--text-faint); font-weight:400; font-size:12px; }
+  input, select, textarea{
+    width:100%; background:var(--bg); border:1px solid var(--line);
+    color:var(--text); font-family:var(--sans); font-size:14.5px;
+    padding:11px 13px; border-radius:4px; outline:none;
+  }
+  input:focus, select:focus, textarea:focus{ border-color:var(--ink); }
+  textarea{ min-height:110px; resize:vertical; }
+  select{ appearance:none; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0 L5 6 L10 0 Z' fill='%23595959'/></svg>"); background-repeat:no-repeat; background-position:right 14px center; }
+  .form-note{ font-size:12.5px; color:var(--text-faint); margin-top:14px; }
+  #form-status{ margin-top:14px; font-size:13.5px; display:none; }
+  #form-status.ok{ display:block; color:var(--ink); font-weight:600; }
+  #form-status.error{ display:block; color:var(--ink); font-weight:600; }
+
+  /* ---- footer ---- */
+  footer{ background:var(--navy); color:#d9d9d9; padding:52px 0 32px; }
+  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; margin-bottom:36px; }
+  .footer-brand .brand{ margin-bottom:14px; }
+  .footer-brand p{ color:#b3b3b3; font-size:13.5px; max-width:320px; }
+  .footer-col h4{ font-size:11.5px; letter-spacing:0.06em; color:#b3b3b3; text-transform:uppercase; margin-bottom:14px; font-weight:600; }
+  .footer-col a, .footer-col span{ display:block; font-size:14px; color:#d9d9d9; margin-bottom:9px; }
+  .footer-col a:hover{ color:#fff; }
+  .footer-col .placeholder{ color:#999999; }
+  .footer-bottom{ border-top:1px solid var(--navy-soft); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .footer-bottom span{ font-size:12.5px; color:#999999; }
+
+  @media (max-width:860px){
+    nav.links{ display:none; }
+    .menu-toggle{ display:block; }
+    .hero .container{ grid-template-columns:1fr; }
+    .hero-diagram{ order:-1; }
+    .service-row{ grid-template-columns:1fr; gap:24px; }
+    .service-row:nth-child(even) .service-copy{ order:0; }
+    .service-row:nth-child(even) .service-visual{ order:0; }
+    .timeline{ grid-template-columns:1fr; gap:32px; }
+    .timeline::before{ display:none; }
+    .contact-wrap{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .footer-grid{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <img class="logo-img" src="assets/logo/cropped/logo-horizontal-light.png" alt="Candela Ingeniería">
+    </a>
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn">Solicitar diagnóstico</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <div class="hero-eyebrow">Ingeniería en seguridad electrónica</div>
+        <h1>Diseño e instalación de sistemas de seguridad para instalaciones que no pueden fallar.</h1>
+        <p class="lead">Cuatro ejes de seguridad electrónica, un mismo compromiso: plazos claros, presupuestos sin costos ocultos, documentación técnica completa y soporte permanente una vez instalado el sistema.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn">Solicitar diagnóstico técnico</a>
+          <a href="#servicios" class="btn btn-ghost">Ver ejes de servicio</a>
+        </div>
+      </div>
+      <div class="hero-diagram">
+        <picture>
+          <source srcset="assets/img/hero.webp" type="image/webp">
+          <img src="assets/img/hero.jpg" alt="Sala de monitoreo de seguridad con múltiples pantallas de videovigilancia" width="1024" height="1024" loading="eager" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Ejes de servicio</div>
+        <h2>Cuatro ejes, un mismo estándar de ingeniería</h2>
+        <p>Cada eje se diseña e instala según la normativa aplicable y las condiciones específicas de la instalación — no como productos genéricos de catálogo.</p>
+      </div>
+
+      <!-- Fila 1 — foto real -->
+      <div class="service-row">
+        <div class="service-copy">
+          <div class="service-index">01 / 04</div>
+          <h3>Detección de incendios</h3>
+          <p>Sistemas de detección temprana y central de alarma diseñados según el riesgo real de cada instalación, con documentación técnica completa que respalda el cumplimiento normativo.</p>
+        </div>
+        <div class="service-visual has-photo">
+          <picture>
+            <source srcset="assets/img/servicio-incendios.webp" type="image/webp">
+            <img src="assets/img/servicio-incendios.jpg" alt="Detector de humo y panel de central de incendios" width="1264" height="1264" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <!-- Fila 2 — foto real -->
+      <div class="service-row">
+        <div class="service-copy">
+          <div class="service-index">02 / 04</div>
+          <h3>Control de acceso</h3>
+          <p>Gestión de accesos por credencial, biometría o clave, con trazabilidad completa de ingresos y soporte técnico de respuesta rápida ante cualquier falla del sistema.</p>
+        </div>
+        <div class="service-visual has-photo">
+          <picture>
+            <source srcset="assets/img/servicio-acceso.webp" type="image/webp">
+            <img src="assets/img/servicio-acceso.jpg" alt="Lector de control de acceso con credencial" width="1456" height="1088" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <!-- Fila 3 — foto real -->
+      <div class="service-row">
+        <div class="service-copy">
+          <div class="service-index">03 / 04</div>
+          <h3>Alarma de intrusión</h3>
+          <p>Sensores perimetrales e interiores con protocolo de respuesta definido y tiempos de reacción comprometidos ante cualquier evento.</p>
+        </div>
+        <div class="service-visual has-photo">
+          <picture>
+            <source srcset="assets/img/servicio-intrusion.webp" type="image/webp">
+            <img src="assets/img/servicio-intrusion.jpg" alt="Sensor de movimiento perimetral y panel de monitoreo de intrusión" width="1264" height="1264" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <!-- Fila 4 — foto real -->
+      <div class="service-row">
+        <div class="service-copy">
+          <div class="service-index">04 / 04</div>
+          <h3>CCTV</h3>
+          <p>Videovigilancia con cobertura calculada por punto crítico y presupuesto cerrado sin costos ocultos.</p>
+        </div>
+        <div class="service-visual has-photo">
+          <picture>
+            <source srcset="assets/img/servicio-cctv.webp" type="image/webp">
+            <img src="assets/img/servicio-cctv.jpg" alt="Cámara de videovigilancia CCTV instalada en muro exterior" width="1024" height="1024" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="proceso">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Metodología</div>
+        <h2>Proceso de trabajo</h2>
+        <p>Mismo procedimiento para los cuatro ejes de servicio, de principio a fin.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-num">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Levantamiento en terreno de la instalación, riesgos y requerimientos normativos.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">02</div>
+          <h3>Diseño de sistema</h3>
+          <p>Ingeniería de detalle: equipos, cobertura, cableado y puntos de integración.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">03</div>
+          <h3>Instalación</h3>
+          <p>Ejecución en obra con pruebas de funcionamiento y puesta en marcha.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-num">04</div>
+          <h3>Mantención</h3>
+          <p>Revisión periódica y soporte para asegurar continuidad operativa del sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacto" style="border-bottom:none;">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <div class="eyebrow">Contacto</div>
+          <h2>Solicitar diagnóstico técnico</h2>
+          <p>Cuéntenos qué instalación necesita evaluar y en qué eje de servicio. Un ingeniero responde con los siguientes pasos.</p>
+
+          <div class="contact-fact"><span class="label">Teléfono</span><span><a href="tel:+56955267419">+56 9 5526 7419</a></span></div>
+          <div class="contact-fact"><span class="label">Email</span><span><a href="mailto:contacto@candelaing.cl">contacto@candelaing.cl</a></span></div>
+          <div class="contact-fact"><span class="label">Dirección</span><span>Nicanor Plaza 115, Santiago, RM, Chile</span></div>
+        </div>
+
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="rut">RUT <span class="opt">(opcional)</span></label>
+              <input type="text" id="rut" name="rut" placeholder="12.345.678-9">
+            </div>
+            <div class="field">
+              <label for="servicio">Servicio requerido</label>
+              <select id="servicio" name="servicio" required>
+                <option value="" disabled selected>Seleccionar</option>
+                <option value="incendios">Detección de incendios</option>
+                <option value="acceso">Control de acceso</option>
+                <option value="intrusion">Alarma de intrusión</option>
+                <option value="cctv">CCTV</option>
+                <option value="varios">Más de un servicio</option>
+                <option value="otro">Otro / no estoy seguro</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Tipo de instalación, ubicación, plazos, etc." required></textarea>
+          </div>
+          <button type="submit" class="btn" style="width:100%; justify-content:center;">Enviar solicitud</button>
+          <p class="form-note">Al enviar, aceptas que te contactemos por teléfono o email para responder tu solicitud.</p>
+          <div id="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <img class="logo-img" src="assets/logo/cropped/logo-horizontal-dark.png" alt="Candela Ingeniería">
+        </div>
+        <p>Ingeniería en seguridad electrónica: detección de incendios, control de acceso, alarma de intrusión y CCTV.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="tel:+56955267419">+56 9 5526 7419</a>
+        <a href="mailto:contacto@candelaing.cl">contacto@candelaing.cl</a>
+        <span>Nicanor Plaza 115, Santiago, RM</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Candela Ingeniería — Santiago, Chile</span>
+      <span>RM · Región Metropolitana</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('nav.links');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.style.display === 'flex';
+    navLinks.style.display = isOpen ? 'none' : 'flex';
+    navLinks.style.cssText += isOpen ? '' : 'position:absolute; top:100%; left:0; right:0; flex-direction:column; background:#ffffff; padding:20px 24px; border-bottom:1px solid #e6e6e6; gap:18px;';
+  });
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    status.classList.remove('ok', 'error');
+    status.textContent = '';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      status.textContent = 'Solicitud enviada. Te contactaremos a la brevedad.';
+      status.classList.add('ok');
+      form.reset();
+    } catch {
+      status.textContent = 'No se pudo enviar la solicitud. Intenta nuevamente o escríbenos a contacto@candelaing.cl.';
+      status.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar solicitud';
+    }
+  });
+</script>
+
+</body>
+</html>
