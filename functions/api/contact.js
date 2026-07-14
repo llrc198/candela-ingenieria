@@ -3,7 +3,8 @@
 // Requiere la variable de entorno RESEND_API_KEY configurada como secret en
 // el proyecto de Cloudflare Pages (Settings → Environment variables).
 
-const REQUIRED_FIELDS = ["nombre", "empresa", "servicio", "mensaje"];
+const REQUIRED_FIELDS = ["nombre", "empresa", "email", "telefono", "servicio", "mensaje"];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ALLOWED_SERVICIOS = new Set([
   "incendios",
   "acceso",
@@ -29,6 +30,17 @@ function jsonResponse(body, status) {
   });
 }
 
+function sendEmail(env, payload) {
+  return fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
 export async function onRequestPost({ request, env }) {
   let data;
   try {
@@ -45,16 +57,24 @@ export async function onRequestPost({ request, env }) {
   if (!ALLOWED_SERVICIOS.has(data.servicio)) {
     return jsonResponse({ error: "Servicio inválido." }, 400);
   }
+  if (!EMAIL_RE.test(data.email.trim())) {
+    return jsonResponse({ error: "Email inválido." }, 400);
+  }
 
   const nombre = data.nombre.trim().slice(0, 200);
   const empresa = data.empresa.trim().slice(0, 200);
+  const email = data.email.trim().slice(0, 200);
+  const telefono = data.telefono.trim().slice(0, 40);
   const rut = (data.rut || "").trim().slice(0, 20);
   const servicioLabel = SERVICIO_LABELS[data.servicio];
   const mensaje = data.mensaje.trim().slice(0, 4000);
 
-  const emailBody = [
+  // 1. Notificación interna a Candela
+  const notifyBody = [
     `Nombre: ${nombre}`,
     `Empresa: ${empresa}`,
+    `Email: ${email}`,
+    `Teléfono: ${telefono}`,
     `RUT: ${rut || "(no indicado)"}`,
     `Servicio requerido: ${servicioLabel}`,
     "",
@@ -62,23 +82,36 @@ export async function onRequestPost({ request, env }) {
     mensaje,
   ].join("\n");
 
-  const resendRes = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "Candela Ingeniería <formulario@mail.candelaing.cl>",
-      to: ["contacto@candelaing.cl"],
-      subject: `Nueva solicitud de diagnóstico — ${empresa}`,
-      text: emailBody,
-    }),
+  const notifyRes = await sendEmail(env, {
+    from: "Candela Ingeniería <formulario@mail.candelaing.cl>",
+    to: ["contacto@candelaing.cl"],
+    reply_to: email,
+    subject: `Nueva solicitud de diagnóstico — ${empresa}`,
+    text: notifyBody,
   });
 
-  if (!resendRes.ok) {
+  if (!notifyRes.ok) {
     return jsonResponse({ error: "No se pudo enviar el mensaje. Intenta nuevamente." }, 502);
   }
+
+  // 2. Confirmación automática al cliente (best-effort: si falla, la solicitud
+  // ya quedó capturada internamente, así que no se reporta como error al usuario).
+  await sendEmail(env, {
+    from: "Candela Ingeniería <formulario@mail.candelaing.cl>",
+    to: [email],
+    subject: "Recibimos tu solicitud — Candela Ingeniería",
+    text: [
+      `Hola ${nombre},`,
+      "",
+      `Recibimos tu solicitud sobre ${servicioLabel.toLowerCase()}. Un ingeniero de Candela` +
+        " Ingeniería la va a revisar y te vamos a contactar a la brevedad.",
+      "",
+      "Si es urgente, puedes llamarnos directamente al +56 9 5526 7419.",
+      "",
+      "Saludos,",
+      "Candela Ingeniería",
+    ].join("\n"),
+  }).catch(() => {});
 
   return jsonResponse({ ok: true }, 200);
 }
