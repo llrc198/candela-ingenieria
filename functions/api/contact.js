@@ -4,6 +4,11 @@
 // el proyecto de Cloudflare Pages (Settings → Environment variables).
 
 const REQUIRED_FIELDS = ["nombre", "empresa", "email", "telefono", "servicio", "mensaje"];
+const NOTIFY_RECIPIENTS = [
+  "contacto@candelaing.cl",
+  "gvieira@candelaing.cl",
+  "leonardorangel1990@gmail.com",
+];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ALLOWED_SERVICIOS = new Set([
   "incendios",
@@ -84,7 +89,7 @@ export async function onRequestPost({ request, env }) {
 
   const notifyRes = await sendEmail(env, {
     from: "Candela Ingeniería <formulario@mail.candelaing.cl>",
-    to: ["contacto@candelaing.cl"],
+    to: NOTIFY_RECIPIENTS,
     reply_to: email,
     subject: `Nueva solicitud de diagnóstico — ${empresa}`,
     text: notifyBody,
